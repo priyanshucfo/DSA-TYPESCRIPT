@@ -11,6 +11,7 @@ function bubbleSort<T>(array: T[]) {
   return array;
 }
 
+//Soltion 1.0
 function selectionSort<T>(array: T[]) {
   for (let i = 0; i < array.length; i++) {
     let smIdx = i;
