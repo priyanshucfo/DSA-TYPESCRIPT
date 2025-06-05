@@ -20,7 +20,7 @@ function selectionSort<T>(array: T[]) {
         smIdx = j;
       }
     }
-    
+
     if (array[i] > array[smIdx]) {
       let temp = array[i];
       array[i] = array[smIdx];
@@ -51,4 +51,34 @@ function insertionSort<T>(array: T[]) {
   return array;
 }
 
-export default { bubbleSort, selectionSort, insertionSort };
+function shellSort(array: number[]) {
+  let interval = array.length;
+  do {
+    interval = Math.round(interval / 2);
+    let inc = 0;
+    for (let i = 0; i < array.length; i += interval) {
+      if (i + interval > array.length - 1) {
+        i = ++inc;
+        if (i >= interval) {
+          break;
+        }
+      }
+      let keyIdx = i + interval;
+      let keyValue = array[keyIdx];
+      let j = i;
+      for (j; j >= inc; j -= interval) {
+        if(array[j] > keyValue) {
+          array[j + interval] = array[j];
+        } else {
+          break;
+        }
+      }
+      array[j + interval] = keyValue;
+    }
+    // console.log("\n");
+  } while (interval !== 1);
+
+  return array;
+}
+
+export default { bubbleSort, selectionSort, insertionSort, shellSort };
