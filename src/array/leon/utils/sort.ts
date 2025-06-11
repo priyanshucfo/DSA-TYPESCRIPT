@@ -67,7 +67,7 @@ function shellSort(array: number[]) {
       let keyValue = array[keyIdx];
       let j = i;
       for (j; j >= inc; j -= interval) {
-        if(array[j] > keyValue) {
+        if (array[j] > keyValue) {
           array[j + interval] = array[j];
         } else {
           break;
@@ -81,4 +81,39 @@ function shellSort(array: number[]) {
   return array;
 }
 
-export default { bubbleSort, selectionSort, insertionSort, shellSort };
+function countingSort(array: number[]) {
+  let maxElement = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > maxElement) {
+      maxElement = array[i];
+    }
+  }
+
+  const countArray: number[] = new Array(maxElement + 1).fill(0);
+  const sortedArray: number[] = new Array(array.length).fill(0);
+
+  for (let i = 0; i < array.length; i++) {
+    countArray[array[i]]++;
+  }
+
+  for (let i = 0; i < countArray.length - 1; i++) {
+    countArray[i + 1] += countArray[i];
+  }
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    let reindex = countArray[array[i]] -= 1;
+    sortedArray[reindex] = array[i];
+    // console.log("index", reindex, "value", array[i], "index", i);
+  }
+
+  return sortedArray;
+}
+
+export default {
+  bubbleSort,
+  selectionSort,
+  insertionSort,
+  shellSort,
+  countingSort,
+};
