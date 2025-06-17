@@ -1,0 +1,5 @@
+/*
+Delete the head node
+Delete the tail node
+Search and Delete a node
+*/

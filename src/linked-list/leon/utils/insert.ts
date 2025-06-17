@@ -1,0 +1,6 @@
+/*
+Inserting at head
+Inserting at tail
+Inserting after a node
+Inserting before a node
+*/
